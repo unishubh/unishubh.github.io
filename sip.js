@@ -79,7 +79,7 @@ let drawPieChart = async (expected, gained) => {
     let data = {
         datasets: [{
             data: [expected, gained],
-            backgroundColor: ["rgba(217, 30, 24, 1)", "rgba(46, 204, 113, 1)"]
+            backgroundColor: ["rgba(210, 77, 87, 1)", "rgba(46, 204, 113, 1)"]
         }],
         labels: ['Invested', 'Gained']
     };
@@ -133,6 +133,7 @@ let getResults = async () => {
     await drawBarGraph(calculated_values);
     await putData(data.principle, data.years, result);
     document.getElementById('result').style.display = "block";
+    document.getElementById('barBanner').innerHTML = "Predictions based on investment of Rs. "+data.principle+" at "+data.rate+"% interest";
 };
 
 //window.onload = drawBarGraph;
