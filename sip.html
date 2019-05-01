@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,500i,700,800i" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.2.0"></script>
     <style>
         .social-part .fa {
             padding-right: 20px;
@@ -40,7 +41,7 @@
         }
 
         #submit {
-            margin-top: 13%;
+            margin-top: 10%;
             width: 100%;
         }
 
@@ -48,6 +49,18 @@
             background-color: #6c757d;
             border-radius: 5% 5% 5% 5%;
         }
+
+        #result {
+            display: none;
+        }
+
+        table,
+        tr,
+        td {
+            border: black;
+            border-style: double;
+        }
+        
     </style>
     <script type="text/javascript" src="./sip.js"></script>
 </head>
@@ -97,14 +110,14 @@
                             <div class="col-sm-6 md-6">
                                 <div class="form-group">
                                     <label for="principle">Monthly Invetment in Rs</label>
-                                    <input type="text" class="form-control" id="principle" placeholder="1000">
+                                    <input type="text" class="form-control" id="principle" value="1000">
                                 </div>
 
                             </div>
                             <div class="col-sm-6 md-6">
                                 <div class="form-group">
                                     <label for="period">Investment Period(in years)</label>
-                                    <input type="text" class="form-control" id="years" placeholder="2">
+                                    <input type="text" class="form-control" id="years" value="2">
                                 </div>
                             </div>
                         </div>
@@ -112,20 +125,21 @@
                             <div class="col-sm-6 md-6">
                                 <div class="form-group">
                                     <label for="principle">Expected Returns (annual)</label>
-                                    <input type="text" class="form-control" id="rate" placeholder="15">
+                                    <input type="text" class="form-control" id="rate" value="15">
                                 </div>
                             </div>
                             <div class="col-sm-6 md-6">
 
-                                <button type="button" onclick="getResults()" class="btn btn-outline-secondary" id="submit">Submit</button>
+                                <button type="button" onclick="getResults()" class="btn btn-outline-secondary"
+                                    id="submit">Submit</button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="card" id="result">
                     <div class="row">
-                        <div class="col-sm-3 md-3">
-                            <table class="table">
+                        <div class="col-sm-4 md-4">
+                            <table class="table table-striped">
                                 <tr>
                                     <td>Expected Amount</td>
                                     <td id="expected">10000</td>
@@ -140,9 +154,13 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="col-sm-9 md-9">
-                                <canvas id="barChart"></canvas>
+                        <div class="col-sm-8 md-8">
+                            <canvas id="pieChart"></canvas>
                         </div>
+                    </div>
+                    <hr>
+                    <div class="container">
+                        <canvas id="barChart"></canvas>
                     </div>
 
                 </div>
