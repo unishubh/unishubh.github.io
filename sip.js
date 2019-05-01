@@ -25,7 +25,7 @@ let drawBarGraph = async (calculated_values) => {
     let densityCanvas = document.getElementById("barChart");
     let densityData = {
         label: 'Expected Value',
-        backgroundColor: '#ccddee',//["#ccddee", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#3e95cd", "#8e5ea2"],
+        backgroundColor: 'rgba(25, 181, 254, 1)',//["#ccddee", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#3e95cd", "#8e5ea2"],
         data: calculated_values
     };
 
@@ -79,7 +79,7 @@ let drawPieChart = async (expected, gained) => {
     let data = {
         datasets: [{
             data: [expected, gained],
-            backgroundColor: ["#DEB887", "#A9A9A9"]
+            backgroundColor: ["rgba(217, 30, 24, 1)", "rgba(46, 204, 113, 1)"]
         }],
         labels: ['Invested', 'Gained']
     };
