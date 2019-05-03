@@ -114,13 +114,13 @@ let drawPieChart = async (expected, gained) => {
 }
 
 let putData = async (principle, years, result) => {
-    let net_invested = principle * 12 * years;
-    let net_value = result;
-    let net_gain = result - net_invested;
+    let net_invested = result * 12 * years;
+    let net_value = principle;
+    let net_gain = principle - net_invested;
     await drawPieChart(Math.round(net_invested), Math.round(net_gain));
-    document.getElementById('expected').innerHTML = "Rs." + Math.round(net_value);
+    document.getElementById('corpus').innerHTML = "Rs." + Math.round(net_value);
     document.getElementById('invested').innerHTML = "Rs." + Math.round(net_invested);
-    document.getElementById('gained').innerHTML = "Rs." + Math.round(net_gain);
+    document.getElementById('interest').innerHTML = "Rs." + Math.round(net_gain);
 }
 
 let getResults = async () => {
@@ -132,8 +132,8 @@ let getResults = async () => {
      console.log(Math.round(result));
      console.log(calculated_values);
     // await drawBarGraph(calculated_values);
-    // await putData(data.principle, data.years, result);
-    // document.getElementById('result').style.display = "block";
+     await putData(data.principle, data.years, result);
+     document.getElementById('result').style.display = "block";
     // document.getElementById('barBanner').innerHTML = "Predictions based on investment of Rs. "+data.principle+" at "+data.rate+"% interest";
 };
 
