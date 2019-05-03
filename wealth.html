@@ -78,11 +78,12 @@
             background-color: #6c757d;
             color: white;
         }
+
         .banner {
             text-align: center;
         }
     </style>
-    <script type="text/javascript" src="./js/lumSum.js"></script>
+    <script type="text/javascript" src="./js/wealth.js"></script>
 </head>
 
 <body>
@@ -134,21 +135,21 @@
                 <div class="card">
                     <div class="banner">
                         <h4>
-                            <centre>LumSum Caluclator</centre>
+                            <centre>Wealth Caluclator</centre>
                         </h4>
                     </div>
                     <form id="sipForm">
                         <div class="row">
                             <div class="col-sm-6 md-6">
                                 <div class="form-group">
-                                    <label for="principle">Investment in Rs</label>
+                                    <label for="principle">Amount Expected in Rs</label>
                                     <input type="text" class="form-control" id="principle" value="1000">
                                 </div>
 
                             </div>
                             <div class="col-sm-6 md-6">
                                 <div class="form-group">
-                                    <label for="period">Investment Period(in years)</label>
+                                    <label for="period">Tenure (in years)</label>
                                     <input type="text" class="form-control" id="years" value="2">
                                 </div>
                             </div>
@@ -156,7 +157,7 @@
                         <div class="row">
                             <div class="col-sm-6 md-6">
                                 <div class="form-group">
-                                    <label for="principle">Expected Returns (annual)</label>
+                                    <label for="principle">Interest Rate (annual)</label>
                                     <input type="text" class="form-control" id="rate" value="15">
                                 </div>
                             </div>
@@ -178,16 +179,16 @@
                             </div>
                             <table class="table table-striped">
                                 <tr>
-                                    <td>Expected Amount</td>
-                                    <td id="expected">10000</td>
+                                    <td>Loan EMI</td>
+                                    <td id="emi">10000</td>
                                 </tr>
                                 <tr style="color:red;">
-                                    <td>Invested Amount</td>
-                                    <td id="invested">10000</td>
+                                    <td>Total Interest</td>
+                                    <td id="interest">10000</td>
                                 </tr>
                                 <tr style="color:green;">
-                                    <td>Gained Amount</td>
-                                    <td id="gained">10000</td>
+                                    <td>Total Payment (Interest + Prinicple)</td>
+                                    <td id="total">10000</td>
                                 </tr>
                             </table>
                         </div>
@@ -196,94 +197,35 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="container" id="barBanner">Predictions based on investment of Rs. X at y% interest</div>
+                    <!-- <div class="container" id="barBanner">Predictions based on investment of Rs. X at y% interest</div>
                     <div class="container">
 
                         <canvas id="barChart"></canvas>
-                    </div>
+                    </div> -->
 
                 </div>
                 <div class="container">
+                    <br>
                     <p>
-                        <h5>SIP vs LUMSUM</h5>
+                        An Equated Monthly Instalment (EMI) is usually a fixed amount of money that you need to pay your
+                        bank or lender every month as repayment of a loan taken, until your loan is totally repaid. It
+                        is essentially made up of two parts, the principal amount and the interest on the principal
+                        amount, divided across each month of the loan tenure.
+                        The EMI is always paid to the bank or lender on a fixed date each month. This could be done
+                        through post-dated cheques issued in favour of the lender or by providing auto debit
+                        instructions to your bank for the same.
+                    </p>
 
-                        <p>
-                            <table class="table table-striped">
-                                <thead>
-                                    <td>Parameter</td>
-                                    <td>SIP</td>
-                                    <td>Lump Sum Investment</td>
-                                </thead>
-                                <tr>
-                                    <td>Cashflow</td>
-                                    <td>Regular</td>
-                                    <td>One Time</td>
-                                </tr>
-                                <tr>
-                                    <td>Continously Growing Market</td>
-                                    <td>Less Recommended</td>
-                                    <td>More Recommended</td>
-                                </tr>
-                                <tr>
-                                    <td>Required Risk Appetite</td>
-                                    <td>Low to Moderate</td>
-                                    <td>Moderate to High</td>
-                                </tr>
-                                <tr>
-                                    <td>Time of Investment</td>
-                                    <td>Quite immune to volatality of the market</td>
-                                    <td>Subject to market conditions</td>
-                                </tr>
-                                <tr>
-                                    <td>Uncertain Future Income</td>
-                                    <td>Not Recommended</td>
-                                    <td>Relatively Recommended</td>
-                                </tr>
-                                <tr>
-                                    <td>Cost of Investment</td>
-                                    <td>Less due to Rupee cost averaging</td>
-                                    <td>High as this is one time large investment</td>
-                                </tr>
-                                <tr>
-                                    <td>Flexibility of Investment</td>
-                                    <td>High</td>
-                                    <td>Low</td>
-                                </tr>
-                                <tr>
-                                    <td>Horizon</td>
-                                    <td>Ideal for Short Time</td>
-                                    <td>Ideal for Long Time</td>
-                                </tr>
-                                <tr>
-                                    <td>Cashflow</td>
-                                    <td>Regular</td>
-                                    <td>One Time</td>
-                                </tr>
+                    <p>
+                        Now, you might assume that the equal parts of the principal and interest are repaid to the
+                        financial institution every month. However, this not the case. During the initial years of
+                        repayment, the interest component repaid is higher while in later years, the principal component
+                        is higher.<br><br>  
+                        You cannot assume that you will have repaid half of the loan amount once half of the loan tenure
+                        is over. A more likely scenario is that you’ve reduced the total interest component that was due
+                        by a considerable amount while the principal amount remains to be paid.
+                    </p>
 
-                            </table>
-                        </p>
-
-                        <p>
-                            There is multiple method in Investing Mutual Fund except SIP, you can always select best
-                            Method suited for your need or advised by your Financial Consultant.
-                        </p>
-                        <p>
-                            <b>Lump Sum</b> Lump sum investment is considered as one way of investing into mutual
-                            funds. The other method being that of systematic investment plan, popularly known as SIP.
-                            Usually lump sum investments are undertaken by big players and investors, in stocks
-                            especially those related to assets that are likely to appreciate in the long term, making
-                            the investment profitable except in cases of high <b>volatility</b>.
-                        </p>
-                        <p>
-                            <b>STP</b> is a plan that allows the fund manager to transfer funds from units of one scheme
-                            to units of another scheme, with the consent of the investor. After the investor has
-                            invested a lumpsum amount in one of the schemes, he can transfer a fixed amount regularly to
-                            another scheme. This enables the investor to safeguard himself from market volatility by
-                            transferring funds from equity to debt oriented schemes during turbulent times and back to
-                            equity during times of growth. Typically, the larger the lumpsum amount was the longer the
-                            duration of STP is. Funds can also be transferred from equity to debt oriented schemes to
-                            save up for a particular goal, like child's education, buying a home, etc.
-                        </p>
                 </div>
             </div>
             <div class="col-sm-2 md-2">
