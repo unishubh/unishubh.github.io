@@ -93,8 +93,9 @@
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark"
-        style="background-image: linear-gradient(90deg, rgba(75,109,143,1) 42%, rgba(160,164,168,1) 100%);">
-        <img  class ="logo" src="./MFCalc2.png" class="img-fluid" alt="Responsive image">
+        style="background: rgb(151,210,224);
+        background: linear-gradient(90deg, rgba(151,210,224,1) 16%, rgba(124,126,126,1) 81%);">
+        <img  class ="logo" src="./MFCalc.png" class="img-fluid" alt="Responsive image">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -182,8 +183,6 @@
                             <div class="col-sm-6 md-6">
 
                                 <button type="button" onclick="getResults()" class="btn"
-                                    style="background: rgb(125,179,236);
-                                    background: linear-gradient(180deg, rgba(125,179,236,1) 17%, rgba(28,68,107,1) 51%, rgba(64,108,156,1) 100%);"
                                     id="submit">Submit</button>
                             </div>
                         </div>
@@ -192,21 +191,21 @@
                 <div class="card" id="result">
                     <div class="row">
                         <div class="col-sm-4 md-4">
-                            <div style="text-align :center; background: rgb(125,179,236);
-                            background: linear-gradient(180deg, rgba(125,179,236,1) 17%, rgba(28,68,107,1) 51%, rgba(64,108,156,1) 100%); color:white">
+                            <div class="summary" >
                                 <p>
                                     <h2>Summary</h2>
                                 </p>
                             </div>
                             <table class="table table-striped">
                                 <tr>
-                                    <td>Corpus Required</td>
+                                    <td>Corpus Desired</td>
                                     <td id="corpus">10000</td>
                                 </tr>
                                 <tr style="color:red;">
-                                    <td>Total Invested</td>
-                                    <td id="invested">10000</td>
+                                    <td>Monthly Investment</td>
+                                    <td id="minvested">10000</td>
                                 </tr>
+                                
                                 <tr style="color:green;">
                                     <td>Total Returns</td>
                                     <td id="interest">10000</td>

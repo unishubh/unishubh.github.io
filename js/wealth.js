@@ -119,7 +119,8 @@ let putData = async (principle, years, result) => {
     let net_gain = principle - net_invested;
     await drawPieChart(Math.round(net_invested), Math.round(net_gain));
     document.getElementById('corpus').innerHTML = "Rs." + Math.round(net_value);
-    document.getElementById('invested').innerHTML = "Rs." + Math.round(net_invested);
+   // document.getElementById('invested').innerHTML = "Rs." + Math.round(net_invested);
+    document.getElementById('minvested').innerHTML = "Rs." + Math.round(net_invested/(12*years));
     document.getElementById('interest').innerHTML = "Rs." + Math.round(net_gain);
 }
 
