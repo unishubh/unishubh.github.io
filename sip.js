@@ -25,7 +25,7 @@ let drawBarGraph = async (calculated_values) => {
     let densityCanvas = document.getElementById("barChart");
     let densityData = {
         label: 'Expected Value',
-        backgroundColor: 'rgba(25, 181, 254, 1)',//["#ccddee", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#3e95cd", "#8e5ea2"],
+        backgroundColor: 'rgba(151,210,224,1)',//["#ccddee", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#3e95cd", "#8e5ea2"],
         data: calculated_values
     };
 
@@ -36,6 +36,7 @@ let drawBarGraph = async (calculated_values) => {
             datasets: [densityData]
         },
         options: {
+            
             scales: {
                 xAxes: [{
                     barPercentage: 1.0,
@@ -54,11 +55,11 @@ let drawBarGraph = async (calculated_values) => {
                         return context.dataset.data[context.dataIndex] > 15;
                     },
                     font: {
-                        weight: 'bold'
+                        weight: 'normal'
                     },
                     formatter: function (value, context) {
                         if (value >= 1000 && value < 100000) {
-                            return Math.round((value / 1000) * 100) / 100 + "Th"
+                            return Math.round((value / 1000) * 100) / 100 + "K"
                         }
                         else if (value >= 100000 && value < 10000000) {
                             return Math.round((value / 100000) * 100) / 100 + "L"
@@ -79,18 +80,38 @@ let drawPieChart = async (expected, gained) => {
     let data = {
         datasets: [{
             data: [expected, gained],
-            backgroundColor: ["rgba(210, 77, 87, 1)", "rgba(46, 204, 113, 1)"]
+            backgroundColor: ["rgba(151,210,224,1)", "rgba(124,126,126,1)"]
         }],
         labels: ['Invested', 'Gained']
     };
-
+    let plugins = {
+        datalabels: {
+          color: "black",
+          formatter: function (value, context) {
+            if (value >= 1000 && value < 100000) {
+                return Math.round((value / 1000) * 100) / 100 + "K"
+            }
+            else if (value >= 100000 && value < 10000000) {
+                return Math.round((value / 100000) * 100) / 100 + " L"
+            }
+            else if (value > 10000000) {
+                return Math.round((value / 10000000) * 100) / 100 + " Cr"
+            }
+        },
+          font: {
+            weight: 'normal',
+            size: 12,
+          }
+        }
+        };
+        
     let options = {
         responsive: true,
         title: {
             display: true,
             position: "top",
-            text: "Pie Chart",
-            fontSize: 18,
+            text: "Total corpus by end of period",
+            fontSize: 12,
             fontColor: "#111"
         },
         legend: {
@@ -98,15 +119,19 @@ let drawPieChart = async (expected, gained) => {
             position: "bottom",
             labels: {
                 fontColor: "#333",
-                fontSize: 16
+                fontSize: 12
             }
-        }
+        },
+        plugins:plugins
     };
+    
 
     let ctx = document.getElementById("pieChart");
     var myPieChart = new Chart(ctx, {
         type: 'pie',
         data: data,
+        options: options,
+        plugins: plugins,
 
     });
 
@@ -134,6 +159,18 @@ let getResults = async () => {
     await putData(data.principle, data.years, result);
     document.getElementById('result').style.display = "block";
     document.getElementById('barBanner').innerHTML = "Predictions based on investment of Rs. "+data.principle+" at "+data.rate+"% interest";
+};
+
+formatter= async (value) => {
+    if (value >= 1000 && value < 100000) {
+        return Math.round((value / 1000) * 100) / 100 + "Th"
+    }
+    else if (value >= 100000 && value < 10000000) {
+        return Math.round((value / 100000) * 100) / 100 + "L"
+    }
+    else if (value > 10000000) {
+        return Math.round((value / 10000000) * 100) / 100 + "Cr"
+    }
 };
 
 //window.onload = drawBarGraph;

@@ -21,12 +21,31 @@
 }
 
 #submit  {
+    
     background: rgb(151,210,224);
         background: linear-gradient(90deg, rgba(151,210,224,1) 16%, rgba(124,126,126,1) 81%);
+        color: white;
 }
 .summary {
+    padding: 0.08%;
     background: rgb(151,210,224);
     background: linear-gradient(90deg, rgba(151,210,224,1) 16%, rgba(124,126,126,1) 81%);
     text-align: center;
-    color: white;
+    color:white;
+    
+}
+
+#navbarSupportedContent {
+    margin-left: 2%;
+    color: black;
+}
+.nav-link:hover{
+    background-color: rgb(52, 143, 165);
+    font-style: italic;
+    font-size: larger;
+    color: black;
+    
+}
+.nav-link{
+    font-size: larger;
 }
