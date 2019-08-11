@@ -49,3 +49,8 @@
 .nav-link{
     font-size: larger;
 }
+#inwords{
+    text-align: center;
+    background-color: #6c757d;
+    color: white;
+}
