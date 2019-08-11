@@ -159,9 +159,9 @@ let putData = async (principle, years, result) => {
     let net_value = result;
     let net_gain = result - net_invested;
     await drawPieChart(Math.round(net_invested), Math.round(net_gain));
-    document.getElementById('expected').innerHTML = "Rs. " + numberWithCommas(Math.round(net_value));
-    document.getElementById('invested').innerHTML = "Rs. " + numberWithCommas(Math.round(net_invested));
-    document.getElementById('gained').innerHTML = "Rs. " + numberWithCommas(Math.round(net_gain));
+    document.getElementById('expected').innerHTML = "Rs. " + numberWithCommas(Math.round(net_value)) + " ( "+approximate(net_value) + " )";
+    document.getElementById('invested').innerHTML = "Rs. " + numberWithCommas(Math.round(net_invested))+ " ( "+approximate(net_invested) + " )";
+    document.getElementById('gained').innerHTML = "Rs. " + numberWithCommas(Math.round(net_gain))+ " ( "+approximate(net_gain) + " )";
 }
 
 let getResults = async () => {
@@ -198,3 +198,18 @@ let getResults = async () => {
 //       }
 //     })
 //   }
+
+let approximate = (value) =>  {
+    if (value < 1000) {
+        return "<1000"
+    }
+    if (value >= 1000 && value < 100000) {
+        return Math.round((value / 1000) * 100) / 100 + "K"
+    }
+    else if (value >= 100000 && value < 10000000) {
+        return Math.round((value / 100000) * 100) / 100 + " Lakhs"
+    }
+    else if (value > 10000000) {
+        return Math.round((value / 10000000) * 100) / 100 + " Cr"
+    }
+}

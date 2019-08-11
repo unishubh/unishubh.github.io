@@ -1,4 +1,21 @@
+var a = ['','One ','Two ','Three ','Four ', 'Five ','Six ','Seven ','Eight ','Nine ','Ten ','Eleven ','Twelve ','Thirteen ','Fourteen ','Fifteen ','Sixteen ','Seventeen ','Eighteen ','Nineteen '];
+var b = ['', '', 'Twenty','Thirty','Forty','Fifty', 'Sixty','Seventy','Eighty','Ninety'];
 
+function inWords (num) {
+    if ((num = num.toString()).length > 9) return 'More than 10 Crore';
+    n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+    if (!n) return; var str = '';
+    str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'crore ' : '';
+    str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'lakh ' : '';
+    str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'thousand ' : '';
+    str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'hundred ' : '';
+    str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) + 'only ' : '';
+    return str;
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 let calculateEmi = (principle, interest, time_in_years) => {
     //time_in_years = time_in_years * 12;
     interest = interest / 12;
@@ -26,10 +43,31 @@ let drawPieChart = async (expected, gained) => {
     let data = {
         datasets: [{
             data: [expected, gained],
-            backgroundColor: ["rgba(210, 77, 87, 1)", "rgba(46, 204, 113, 1)"]
+            backgroundColor: ["rgba(151,210,224,1)", "rgba(124,126,126,1)"]
         }],
         labels: ['Priniciple', 'Interest']
     };
+
+    let plugins = {
+        datalabels: {
+          color: "black",
+          formatter: function (value, context) {
+            if (value >= 1000 && value < 100000) {
+                return Math.round((value / 1000) * 100) / 100 + "K"
+            }
+            else if (value >= 100000 && value < 10000000) {
+                return Math.round((value / 100000) * 100) / 100 + " L"
+            }
+            else if (value > 10000000) {
+                return Math.round((value / 10000000) * 100) / 100 + " Cr"
+            }
+        },
+          font: {
+            weight: 'normal',
+            size: 12,
+          }
+        }
+        };
 
     let options = {
         responsive: true,
@@ -47,7 +85,8 @@ let drawPieChart = async (expected, gained) => {
                 fontColor: "#333",
                 fontSize: 16
             }
-        }
+        },
+        plugins: plugins,
     };
 
     let ctx = document.getElementById("pieChart");
@@ -64,9 +103,9 @@ let putData = async (principle, years, result) => {
     let interest = total - principle;
     //let net_gain = net_invested - result;
     await drawPieChart(Math.round(principle), Math.round(interest));
-    document.getElementById('emi').innerHTML = "Rs." + Math.round(result);
-    document.getElementById('interest').innerHTML = "Rs." + Math.round(interest);
-    document.getElementById('total').innerHTML = "Rs." + Math.round(total);
+    document.getElementById('emi').innerHTML = "Rs." + numberWithCommas(Math.round(result)) + " ( "+ approximate(result) +" )";
+    document.getElementById('interest').innerHTML = "Rs." + numberWithCommas(Math.round(interest))+ " ( "+ approximate(interest) +" )";
+    document.getElementById('total').innerHTML = "Rs." + numberWithCommas(Math.round(total))+ " ( "+ approximate(total) +" )";
 }
 
 let getResults = async () => {
@@ -82,3 +121,17 @@ let getResults = async () => {
     document.getElementById('result').style.display = "block";
     //document.getElementById('barBanner').innerHTML = "Predictions based on investment of Rs. " + data.principle + " at " + data.rate + "% interest";
 };
+let approximate = (value) =>  {
+    if (value < 1000) {
+        return "<1000"
+    }
+    if (value >= 1000 && value < 100000) {
+        return Math.round((value / 1000) * 100) / 100 + "K"
+    }
+    else if (value >= 100000 && value < 10000000) {
+        return Math.round((value / 100000) * 100) / 100 + " Lakhs"
+    }
+    else if (value > 10000000) {
+        return Math.round((value / 10000000) * 100) / 100 + " Cr"
+    }
+}
