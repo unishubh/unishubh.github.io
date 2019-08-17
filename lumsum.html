@@ -216,12 +216,31 @@
                     </div>
                     <div class="container" id="inwords"></div>
                     <hr>
-                    <div class="container" id="barBanner">Predictions based on investment of Rs. X at y% interest</div>
-                    <div class="container">
-
-                        <canvas id="barChart"></canvas>
-                    </div>
-
+                    
+                    <div class="row">
+                            <div class="container" id="barBanner">Predictions based on investment of Rs. X at y% interest</div>
+                            <div class="col-sm-4 md-4">
+                                    <table class="table table-striped" >
+                                        <thead>
+                                        <tr id="index">
+                                            <th>Duration</th>
+                                            <th>Value</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="futurePredictions"></tbody>
+                                        </table> 
+                            </div>
+                            <!-- <div class="col-sm-1 md-1"></div> -->
+                            <div class="col-sm-8 md-8">
+                                    
+                                    <div class="container">
+                
+                                        <canvas id="barChart"></canvas>
+                                        
+                                    </div>  
+                            </div>
+                        </div>
+                    
                 </div>
                 <div class="container">
                     <p>

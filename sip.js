@@ -47,20 +47,30 @@ let drawBarGraph = async (calculated_values) => {
     };
 
     var barChart = new Chart(densityCanvas, {
-        type: 'bar',
+        type: 'line',
         data: {
-            labels: [5, 10, 15, 20, 25, 30],
+            labels: ['5 yrs', '10 yrs', '15 yrs', '20 yrs', '25 yrs', '30 yrs'],
             datasets: [densityData]
         },
         options: {
-            
+            tooltips: {
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return   approximate(tooltipItem.yLabel)
+                    }
+                }
+            },
             scales: {
                 xAxes: [{
+                    display: true,
                     barPercentage: 1.0,
                     categoryPercentage: 1.0,
 
 
-                }]
+                }],
+                yAxes : [{
+                    display: false,
+                }],
             },
 
             plugins: {
@@ -174,6 +184,7 @@ let getResults = async () => {
     let words=inWords(Math.round(result));
 
     console.log(calculated_values);
+    await putDataInTable(calculated_values,calculation_periods);
     await drawBarGraph(calculated_values);
     await putData(data.principle, data.years, result);
     document.getElementById('inwords').innerHTML="Total Corpus : "+words
@@ -212,4 +223,20 @@ let approximate = (value) =>  {
     else if (value > 10000000) {
         return Math.round((value / 10000000) * 100) / 100 + " Cr"
     }
+}
+
+let putDataInTable = async (data, calculation_periods) => {
+    let l = data.length
+    let table = document.getElementById('futurePredictions')
+    table.innerHTML='';
+    data.map((i,d)=>{ insetIntoTable(i, calculation_periods[d], table,d)});
+    
+}
+
+let insetIntoTable =  (value,time, table,index) => {
+    let row = table.insertRow(index)
+    let timeCell = row.insertCell(0)
+    let valueCell = row.insertCell(1)
+    timeCell.innerHTML=time+" yrs"
+    valueCell.innerHTML=approximate(value)
 }
