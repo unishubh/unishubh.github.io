@@ -18,7 +18,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.2.0"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel ="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css">
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -28,6 +28,11 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        var roi = 0;
+        var amount = 0;
+        var time =0;
+    </script>
     <style>
         .social-part .fa {
             padding-right: 20px;
@@ -86,15 +91,16 @@
         }
     </style>
     <script type="text/javascript" src="./sip.js"></script>
+    <script type="text/javascript" src="./js/gettter.js"></script>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark"
-    style="background: rgb(151,210,224);
+<body onload="getVariables(window.location.href, document)">
+<nav class="navbar navbar-expand-lg navbar-dark"
+     style="background: rgb(151,210,224);
     background: linear-gradient(90deg, rgba(151,210,224,1) 16%, rgba(124,126,126,1) 81%);">
-    <img  class ="logo" src="./MFCalc.png" class="img-fluid" alt="Responsive image">
+    <img class="logo" src="./MFCalc.png" class="img-fluid" alt="Responsive image">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -112,209 +118,184 @@
             <li class="nav-item active">
                 <a class="nav-link" href="./wealth.html">Wealth <span class="sr-only">(current)</span></a>
             </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li> -->
-            <!-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Services
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style=" background-color: #6c757d;">
-                    <a class="dropdown-item" href="./index.html">SIP Caluclator</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="./lumsum.html">LUMSUM Caluclator</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="./emi.html">EMI Caluclator</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="./hv.html">Human Value Caluclator</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="./wealth.html">Wealth Caluclator</a>
-                </div>
-            </li> -->
-            <!-- <li class="nav-item">
-                <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form> -->
     </div>
 </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-1 md-1">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-1 md-1">
 
-            </div>
-            <div class="col-sm-9 md-9">
-                <div class="card">
-                    <div class="banner">
-                        <h4>
-                            <centre>SIP Caluclator</centre>
-                        </h4>
-                    </div>
-                    <form id="sipForm">
-                        <div class="row">
-                            <div class="col-sm-6 md-6">
-                                <div class="form-group">
-                                    <label for="principle">Monthly Invetment in Rs</label>
-                                    <input type="text" class="form-control" id="principle" value="1000">
-                                </div>
-
-                            </div>
-                            <div class="col-sm-6 md-6">
-                                <div class="form-group">
-                                    <label for="period">Investment Period(in years)</label>
-                                    <input type="text" class="form-control" id="years" value="2">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6 md-6">
-                                <div class="form-group">
-                                    <label for="principle">Expected Returns (annual)</label>
-                                    <input type="text" class="form-control" id="rate" value="15">
-                                </div>
-                            </div>
-                            <div class="col-sm-6 md-6">
-
-                                <a href="#result"><button type="button" 
-                                onclick="getResults()" class="btn btn-outline-secondary"
-                                    id="submit">Submit</button></a>
-                            </div>
-                        </div>
-                    </form>
+        </div>
+        <div class="col-sm-9 md-9">
+            <div class="card">
+                <div class="banner">
+                    <h4>
+                        <centre>SIP Caluclator</centre>
+                    </h4>
                 </div>
-                <div class="card" id="result">
+                <form id="sipForm">
                     <div class="row">
                         <div class="col-sm-6 md-6">
-                            <div class="summary">
-                                <p>
-                                    <h5>Summary</h5>
-                                </p>
+                            <div class="form-group">
+                                <label for="principle">Monthly Invetment in Rs</label>
+                                <input type="text" class="form-control" id="principle" value="1000">
                             </div>
-                            <table class="table table-striped">
-                                
-                                <tr style="color:red;">
-                                    <td>Invested</td>
-                                    <td id="invested">10000</td>
-                                </tr>
-                                <tr style="color:green;">
-                                    <td>Gain</td>
-                                    <td id="gained">10000</td>
-                                </tr>
-                                <tr>
-                                    <td>Total</td>
-                                    <td id="expected">10000</td>
-                                </tr>
-                            </table>
-                            
+
                         </div>
                         <div class="col-sm-6 md-6">
-                            <canvas id="pieChart"></canvas>
-                           
+                            <div class="form-group">
+                                <label for="period">Investment Period(in years)</label>
+                                <input type="text" class="form-control" id="years" value="2">
+                            </div>
                         </div>
                     </div>
-                    <div class="container" id="inwords"></div>
-                    <hr>
-                    
-                        <div class="row">
-                            <div class="container" id="barBanner">Predictions based on investment of Rs. X at y% interest</div>
-                            <div class="col-sm-4 md-4">
-                                    <table class="table table-striped" >
-                                        <thead>
-                                        <tr id="index">
-                                            <th>Duration</th>
-                                            <th>Value</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id="futurePredictions"></tbody>
-                                        </table> 
-                            </div>
-                            <!-- <div class="col-sm-1 md-1"></div> -->
-                            <div class="col-sm-8 md-8">
-                                    
-                                    <div class="container">
-                
-                                        <canvas id="barChart"></canvas>
-                                        
-                                    </div>  
+                    <div class="row">
+                        <div class="col-sm-6 md-6">
+                            <div class="form-group">
+                                <label for="principle">Expected Returns (annual)</label>
+                                <input type="text" class="form-control" id="rate" value=2>
                             </div>
                         </div>
-                    
-                    
+                        <div class="col-sm-6 md-6">
 
-                </div>
-                <div class="container">
-                    <p>
-                        <h5>What is SIP?</h5>
-
-                        <p>
-                            Systematic Investment Plan enables you to build a portfolio over a longer time horizon with
-                            small investments at regular intervals reducing the risk of market volatility.
-                        </p>
-
-                        <p>
-                            <h5>Features of SIP</h5>
-                        </p>
-                        <p>
-                            For long-term wealth creation through equity market you need discipline and long term time
-                            horizon which are inherent features of SIP. The following features of SIP makes it fit for
-                            equity market.
-
-                            <ul>
-                                <li>
-                                    Simple and disciplined approach towards investment
-                                </li>
-                                <li>
-                                    Investment possible with small sum of money invested regularly to accumulate wealth
-                                </li>
-                                <li>
-                                    Based on concept of Rupee Cost Averaging
-                                </li>
-                                <li>
-                                    Flexibility in terms of Amount or Quantity based SIP
-                                </li>
-                                <li>
-                                    Flexible intervals like Daily/ Weekly/ Fortnightly/ Monthly basis
-                                </li>
-                            </ul>
-                        </p>
-
-                        <p>
-                            <h5>Benefits of SIP</h5>
-                        </p>
-                        <p>
-                            As common investor doesn’t have enough time and resources, SIP proves to be a viable option
-                            for them. Listed below are the important benefits of this instrument.
-
-                            <ul>
-                                <li>
-                                    Reduces Risk because of Rupee Cost Averaging
-                                </li>
-                                <li>
-                                    SIP can be started with very small amount of money
-                                </li>
-                                <li>
-                                    Timing the market is not necessary
-                                </li>
-                                <li>
-                                    Long term financial goal can be aligned with SIP
-                                </li>
-                                <li>
-                                    Disciplined approach towards Investment helps in controlling the emotions
-                                </li>
-                            </ul>
-                        </p>
-
-                </div>
+                            <a href="#result">
+                                <button type="button"
+                                        onclick="getResults()" class="btn btn-outline-secondary"
+                                        id="submit">Submit
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="col-sm-2 md-2">
+            <div class="card" id="result">
+                <div class="row">
+                    <div class="col-sm-6 md-6">
+                        <div class="summary">
+                            <p>
+                            <h5>Summary</h5>
+                            </p>
+                        </div>
+                        <table class="table table-striped">
+
+                            <tr style="color:red;">
+                                <td>Invested</td>
+                                <td id="invested">10000</td>
+                            </tr>
+                            <tr style="color:green;">
+                                <td>Gain</td>
+                                <td id="gained">10000</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td id="expected">10000</td>
+                            </tr>
+                        </table>
+
+                    </div>
+                    <div class="col-sm-6 md-6">
+                        <canvas id="pieChart"></canvas>
+
+                    </div>
+                </div>
+                <div class="container" id="inwords"></div>
+                <hr>
+
+                <div class="row">
+                    <div class="container" id="barBanner">Predictions based on investment of Rs. X at y% interest</div>
+                    <div class="col-sm-4 md-4">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr id="index">
+                                <th>Duration</th>
+                                <th>Value</th>
+                            </tr>
+                            </thead>
+                            <tbody id="futurePredictions"></tbody>
+                        </table>
+                    </div>
+                    <!-- <div class="col-sm-1 md-1"></div> -->
+                    <div class="col-sm-8 md-8">
+
+                        <div class="container">
+
+                            <canvas id="barChart"></canvas>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="container">
+                <p>
+                <h5>What is SIP?</h5>
+
+                <p>
+                    Systematic Investment Plan enables you to build a portfolio over a longer time horizon with
+                    small investments at regular intervals reducing the risk of market volatility.
+                </p>
+
+                <p>
+                <h5>Features of SIP</h5>
+                </p>
+                <p>
+                    For long-term wealth creation through equity market you need discipline and long term time
+                    horizon which are inherent features of SIP. The following features of SIP makes it fit for
+                    equity market.
+
+                <ul>
+                    <li>
+                        Simple and disciplined approach towards investment
+                    </li>
+                    <li>
+                        Investment possible with small sum of money invested regularly to accumulate wealth
+                    </li>
+                    <li>
+                        Based on concept of Rupee Cost Averaging
+                    </li>
+                    <li>
+                        Flexibility in terms of Amount or Quantity based SIP
+                    </li>
+                    <li>
+                        Flexible intervals like Daily/ Weekly/ Fortnightly/ Monthly basis
+                    </li>
+                </ul>
+                </p>
+
+                <p>
+                <h5>Benefits of SIP</h5>
+                </p>
+                <p>
+                    As common investor doesn’t have enough time and resources, SIP proves to be a viable option
+                    for them. Listed below are the important benefits of this instrument.
+
+                <ul>
+                    <li>
+                        Reduces Risk because of Rupee Cost Averaging
+                    </li>
+                    <li>
+                        SIP can be started with very small amount of money
+                    </li>
+                    <li>
+                        Timing the market is not necessary
+                    </li>
+                    <li>
+                        Long term financial goal can be aligned with SIP
+                    </li>
+                    <li>
+                        Disciplined approach towards Investment helps in controlling the emotions
+                    </li>
+                </ul>
+                </p>
 
             </div>
         </div>
+        <div class="col-sm-2 md-2">
+
+        </div>
     </div>
+</div>
 </body>
 
 </html>
