@@ -1,38 +1,19 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <!------ Include the above in your HEAD tag ---------->
 
 
 <html lang="en">
 
 <head>
-    
-    <!-- Load Facebook SDK for JavaScript -->
-      <div id="fb-root"></div>
-      <script>
-        window.fbAsyncInit = function() {
-          FB.init({
-            xfbml            : true,
-            version          : 'v5.0'
-          });
-        };
 
-        (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));</script>
-
-      <!-- Your customer chat code -->
-      <div class="fb-customerchat"
-        attribution=setup_tool
-        page_id="105643367493126">
-      </div>
-    
-    
+    <script >
+        $(function(){
+            $('#header').load('/unishubh.github.io/header.html')
+        });
+    </script>
     
     <title>SIP Calculator</title>
     <meta charset="utf-8">
@@ -122,32 +103,7 @@
 </head>
 
 <body onload="getVariables(window.location.href, document)">
-<nav class="navbar navbar-expand-lg navbar-dark"
-     style="background: rgb(151,210,224);
-    background: linear-gradient(90deg, rgba(151,210,224,1) 16%, rgba(124,126,126,1) 81%);">
-    <img class="logo" src="./MFCalc.png" class="img-fluid" alt="Responsive image">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="./index.html">SIP <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="./emi.html">EMI <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="lumpsum.html">LUMPSUM <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="./wealth.html">Wealth <span class="sr-only">(current)</span></a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<div id = 'header'></div>
 <div class="container">
     <div class="row">
         <div class="col-sm-1 md-1">
