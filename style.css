@@ -59,3 +59,15 @@
     font-size: small;
     color: #6c757d;
 }
+#details {
+
+}
+#social_icons {
+    display: flex; justify-content: center;
+    padding-top: 7%;
+}
+
+.icons {
+    padding: 20%;
+}
+
