@@ -181,7 +181,7 @@ let getResults = async () => {
 
 let approximate = (value) =>  {
     if (value < 1000) {
-        return "<1000"
+        return Math.round(value)
     }
     if (value >= 1000 && value < 100000) {
         return Math.round((value / 1000) * 100) / 100 + "K"
