@@ -17,10 +17,10 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-let calculateSip = (principle, number_per_year, interest, time_in_years) => {
+let calculateSip = (principle, number_per_year, interest, time_in_years, reduction_months =0 ) => {
     let actual_rate = interest / number_per_year / 100;
-    let installments = number_per_year * time_in_years;
-    calc = principle * Math.pow((1 + actual_rate / number_per_year), number_per_year * time_in_years);
+    let installments = (number_per_year * time_in_years) - reduction_months;
+    calc = principle * Math.pow((1 + actual_rate / number_per_year), installments);
     calc = principle * (Math.pow((1 + actual_rate), installments) - 1) / actual_rate * (1 + actual_rate);
     return calc;
 }
