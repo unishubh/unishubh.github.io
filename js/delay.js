@@ -51,7 +51,7 @@ let getResultsForDelay = async () => {
    // let words=inWords(Math.round(result));
     await putDataInTable(actual_calculated_values, delayed_calculated_values,calculation_periods);
     await putData(data.principle, data.years, actual_result,delayed_result);
-  //  await drawBarGraph(actual_calculated_values, delayed_calculated_values);
+    await drawBarGraph(actual_calculated_values, delayed_calculated_values);
     document.getElementById('barBanner').innerHTML = "Predictions based on investment of Rs. "+data.principle+" at "+data.rate+"% interest";
 
     document.getElementById('result').style.display = "block";
@@ -121,29 +121,33 @@ let approximate = (value) =>  {
 let drawBarGraph = async (actual_values, delay_values) => {
     let densityCanvas = document.getElementById("barChart");
     let actualDensityData = {
+
         label: 'Expected Value Without Delay',
-        backgroundColor: 'rgba(151,210,224,1)',//["#ccddee", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#3e95cd", "#8e5ea2"],
-        data: actual_values
+        backgroundColor: 'rgba(125,211,222,0.5)',//["#ccddee", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#3e95cd", "#8e5ea2"],
+        data: actual_values,
+        fillColor:"transparent",
     };
     let delayDensityData = {
         label: 'Expected Value With Delay',
-        backgroundColor: '#ce0726',//["#ccddee", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#3e95cd", "#8e5ea2"],
+        backgroundColor: 'rgb(123,130,131)',//["#ccddee", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#3e95cd", "#8e5ea2"],
         data: delay_values
     }
 
     var barChart = new Chart(densityCanvas, {
         type: 'line',
+        fillOpacity: .9,
         data: {
             labels: ['5 yrs', '10 yrs', '15 yrs', '20 yrs', '25 yrs', '30 yrs'],
-            datasets: [actualDensityData, delayDensityData]
+            datasets: [actualDensityData,delayDensityData]
         },
-        fill : false,
+
         options: {
             tooltips: {
-                callbacks: {
-                    label: function(tooltipItem) {
-                        return   approximate(tooltipItem.yLabel)
-                    }
+                enabled : false,
+            },
+            elements: {
+                point: {
+                    radius :0,
                 }
             },
             scales: {
@@ -155,33 +159,19 @@ let drawBarGraph = async (actual_values, delay_values) => {
 
                 }],
                 yAxes : [{
-                    display: false,
+                    display: true,
+                    ticks : {
+                        callback: function (value) {
+                                return approximate(value);
+                        }
+                    }
 
                 }],
             },
 
             plugins: {
                 datalabels: {
-                    color: 'black',
-                    align: 'end',
-                    display: function (context) {
-                        console.log("Algo: " + context);
-                        return context.dataset.data[context.dataIndex] > 15;
-                    },
-                    font: {
-                        weight: 'normal'
-                    },
-                    formatter: function (value, context) {
-                        if (value >= 1000 && value < 100000) {
-                            return Math.round((value / 1000) * 100) / 100 + "K"
-                        }
-                        else if (value >= 100000 && value < 10000000) {
-                            return Math.round((value / 100000) * 100) / 100 + "L"
-                        }
-                        else if (value > 10000000) {
-                            return Math.round((value / 10000000) * 100) / 100 + "Cr"
-                        }
-                    }
+                    display: false,
                 }
             }
         }

@@ -7,7 +7,14 @@ function getVariables (url, refdoc) {
     amount = (Pamount == null) ? 2000 : Pamount;
     roi = (Proi == null) ? 7 : Proi;
     console.log("getting here", roi);
-    refdoc.getElementById("rate").value = roi;
-    refdoc.getElementById("years").value = time;
-    refdoc.getElementById("principle").value = amount;
+    if(refdoc.getElementById("rate") != null) {
+        refdoc.getElementById("rate").value = roi;
+    }
+    if(refdoc.getElementById("years") != null) {
+        refdoc.getElementById("years").value = time;
+    }
+    if(refdoc.getElementById("principle") != null) {
+        refdoc.getElementById("principle").value = amount;
+    }
+
 }

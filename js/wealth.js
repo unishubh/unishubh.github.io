@@ -173,7 +173,7 @@ let getResults = async () => {
 //     })
 //   }
 let approximate = (value) =>  {
-    if (value < 1000) {
+    if (value <= 1000) {
         return Math.round(value)
     }
     if (value >= 1000 && value < 100000) {
