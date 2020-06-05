@@ -189,7 +189,7 @@ let getResults = async () => {
     await putData(data.principle, data.years, result);
     document.getElementById('inwords').innerHTML="Total Corpus : "+words
     document.getElementById('result').style.display = "block";
-    document.getElementById('barBanner').innerHTML = "Predictions based on investment of Rs. "+data.principle+" at "+data.rate+"% interest";
+    document.getElementById('barBanner').innerHTML = "Calculations based on investment of Rs. "+data.principle+" at "+data.rate+"% return";
 };
 
 

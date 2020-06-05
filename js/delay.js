@@ -52,7 +52,7 @@ let getResultsForDelay = async () => {
     await putDataInTable(actual_calculated_values, delayed_calculated_values,calculation_periods);
     await putData(data.principle, data.years, actual_result,delayed_result);
     await drawBarGraph(actual_calculated_values, delayed_calculated_values);
-    document.getElementById('barBanner').innerHTML = "Predictions based on investment of Rs. "+data.principle+" at "+data.rate+"% interest";
+    document.getElementById('barBanner').innerHTML = "Calculations based on investment of Rs. "+data.principle+" at "+data.rate+"% return";
 
     document.getElementById('result').style.display = "block";
 
@@ -135,7 +135,7 @@ let drawBarGraph = async (actual_values, delay_values) => {
 
     var barChart = new Chart(densityCanvas, {
         type: 'line',
-        fillOpacity: .9,
+        //fillOpacity: .9,
         data: {
             labels: ['5 yrs', '10 yrs', '15 yrs', '20 yrs', '25 yrs', '30 yrs'],
             datasets: [actualDensityData,delayDensityData]
@@ -143,11 +143,10 @@ let drawBarGraph = async (actual_values, delay_values) => {
 
         options: {
             tooltips: {
-                enabled : false,
-            },
-            elements: {
-                point: {
-                    radius :0,
+                callbacks: {
+                    label: function(tooltipItem) {
+                        return   approximate(tooltipItem.yLabel)
+                    }
                 }
             },
             scales: {
@@ -162,7 +161,7 @@ let drawBarGraph = async (actual_values, delay_values) => {
                     display: true,
                     ticks : {
                         callback: function (value) {
-                                return approximate(value);
+                            return approximate(value);
                         }
                     }
 
