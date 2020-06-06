@@ -137,9 +137,10 @@
                                 </div>
                             </div>
                             <div class="col-sm-6 md-6">
-
-                                <button type="button" onclick="getResults()" class="btn"
-                                    id="submit">Submit</button>
+                                <a href="#result">
+                                    <button type="button" onclick="getResults()" class="btn"
+                                        id="submit">Submit</button>
+                                </a>
                             </div>
                         </div>
                     </form>
@@ -161,6 +162,11 @@
                                     <td>Monthly Investment</td>
                                     <td id="minvested">10000</td>
                                 </tr>
+
+                                <tr style="color:red;">
+                                    <td>Total Investment</td>
+                                    <td id="totinvested">50</td>
+                                </tr>
                                 
                                 <tr style="color:green;">
                                     <td>Total Return</td>
@@ -178,19 +184,25 @@
 
                         <canvas id="barChart"></canvas>
                     </div> -->
-
+                <br>
                 </div>
                 <div class="card">
                     <div class = row>
                         <div class="col-sm-12 md-12 " id="details">
                             <p> <h5 class="banner"> How to gain wealth?</h5>
+                            <br>
+                            <br>
                             You can always buy wealth on EMI, use this calculator to get the estimated monthly cost for achieving your Dreams<br><br>
+                            <br>
                             <h6><b>
                                 How to develop a plan to become a Crorepati in 15 years?
                             </b></h6>
                             <p>
+                                <br>
                                 It’s a Simple Formula – If we invest <b>Rs.15000 for 15 years & get 15%</b> Return then we will be accumulating the <b>Corpus of 1Cr. at the End of 15 years</b>. <br>
-                                Connect your Financial Advisor to Plan & Invest for Wealth/vacation/Retirement & Other Goals | <b>Connect to Plan</b> <a href="https://wa.me/9307610900"> <i class="fa fa-whatsapp fa-2x" ></i></a><br><br>
+                                Connect your Financial Advisor to Plan & Invest for Wealth/vacation/Retirement & Other Goals | <b>Connect to Plan</b> <a target="_blank" href="https://wa.me/9307610900"> <i class="fa fa-whatsapp fa-2x" ></i></a><br><br>
+                                <br>
+                                <div id="share"></div>
                                 <hr>
                                 <b>Connect with our Investor Education Initiative (NIVESHALA)</b> to Enhance Knowledge and Make a better choice in Life in terms of Personal Finance.
 
@@ -213,30 +225,7 @@
 
 
                 </div>
-                <div id = "disclaimer"></div>
-                <!-- <div class="container">
-                    <br>
-                    <p>
-                        An Equated Monthly Instalment (EMI) is usually a fixed amount of money that you need to pay your
-                        bank or lender every month as repayment of a loan taken, until your loan is totally repaid. It
-                        is essentially made up of two parts, the principal amount and the interest on the principal
-                        amount, divided across each month of the loan tenure.
-                        The EMI is always paid to the bank or lender on a fixed date each month. This could be done
-                        through post-dated cheques issued in favour of the lender or by providing auto debit
-                        instructions to your bank for the same.
-                    </p>
 
-                    <p>
-                        Now, you might assume that the equal parts of the principal and interest are repaid to the
-                        financial institution every month. However, this not the case. During the initial years of
-                        repayment, the interest component repaid is higher while in later years, the principal component
-                        is higher.<br><br>  
-                        You cannot assume that you will have repaid half of the loan amount once half of the loan tenure
-                        is over. A more likely scenario is that you’ve reduced the total interest component that was due
-                        by a considerable amount while the principal amount remains to be paid.
-                    </p>
-
-                </div> -->
             </div>
             <div class="col-sm-2 md-2">
 
@@ -244,5 +233,8 @@
         </div>
     </div>
 </body>
+<div>
+    <br>
+</div>
 <div id="footer"></div>
 </html>

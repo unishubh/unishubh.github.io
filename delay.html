@@ -193,9 +193,9 @@
                             <caption>*Total Investment is calculated assuming no delay</caption>
                             <tr>
                                 <th></th>
-                                <th>Actual</th>
-                                <th>With Delay*</th>
-                                <th>Loss</th>
+                                <th>Actual Investment</th>
+                                <th>Delayed Investment*</th>
+                                <th>Loss(due to delay)</th>
                             </tr>
                             <tr style="color :red">
                                 <td><strong>Invested</strong></td>
@@ -225,7 +225,9 @@
                 </div>
                 <div class="container" id="inwords"></div>
                 <hr>
-
+                <div >
+                    <canvas id="barChart"></canvas>
+                </div>
                 <div class="row">
                     <div class="container" id="barBanner">Calculations based on investment of Rs. X at y% return</div>
 
@@ -243,7 +245,7 @@
                             <tr id="index">
                                 <th>Duration</th>
                                 <th>Actual</th>
-                                <th>With Delay</th>
+                                <th>Delayed</th>
                                 <th>Loss</th>
                             </tr>
                             </thead>
@@ -265,9 +267,7 @@
 <!--                        </div>-->
 <!--                    </div>-->
                 </div>
-                <div >
-                    <canvas id="barChart"></canvas>
-                </div>
+
 
 
             </div>
@@ -276,10 +276,9 @@
                     <div class="col-sm-12 md-12 " id="details">
                         <p>
                         <h5 class="banner">Delaying an SIP?</h5>
-                        <br>
                         <p>
 
-                            <b>Are you planning to delay investing? Check how much your delay can cost you?</b> <br><br>
+                        <h6><b>Are you planning to delay investing? Check how much your delay can cost you?</b> </h6><br>
 
                             This calculator helps you <strong>understand the impact </strong> of delaying your systematic investment by a certain month(s).<br><br>
                             You need to input the monthly investment amount, the investment tenure, the expected rate of return and the expected delay in investment. It displays the <strong>maturity amount </strong>if investment was spread over planned number of years and the maturity amount in the delayed number of months and the <strong>cost of delay</strong>.<br><br>
@@ -306,11 +305,13 @@
 
 
             </div>
-            <div id = "disclaimer"></div>
         </div>
         <div class="col-sm-2 md-2"></div>
     </div>
 
+</div>
+<div>
+    <br>
 </div>
 <div id = "footer"></div>
 </body>

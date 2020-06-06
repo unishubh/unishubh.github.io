@@ -78,12 +78,12 @@ let drawBarGraph = async (calculated_values) => {
                     },
                     formatter: function (value, context) {
                         if (value >= 1000 && value < 100000) {
-                            return Math.round((value / 1000) * 100) / 100 + "Th"
+                            return Math.round((value / 1000) * 100) / 100 + "K"
                         }
                         else if (value >= 100000 && value < 10000000) {
                             return Math.round((value / 100000) * 100) / 100 + "L"
                         }
-                        else if (value > 10000000) {
+                        else if (value >= 10000000) {
                             return Math.round((value / 10000000) * 100) / 100 + "Cr"
                         }
                     }
@@ -113,7 +113,7 @@ let drawPieChart = async (expected, gained) => {
             else if (value >= 100000 && value < 10000000) {
                 return Math.round((value / 100000) * 100) / 100 + " L"
             }
-            else if (value > 10000000) {
+            else if (value >= 10000000) {
                 return Math.round((value / 10000000) * 100) / 100 + " Cr"
             }
         },
@@ -187,9 +187,9 @@ let approximate = (value) =>  {
         return Math.round((value / 1000) * 100) / 100 + "K"
     }
     else if (value >= 100000 && value < 10000000) {
-        return Math.round((value / 100000) * 100) / 100 + " Lakhs"
+        return Math.round((value / 100000) * 100) / 100 + " L"
     }
-    else if (value > 10000000) {
+    else if (value >= 10000000) {
         return Math.round((value / 10000000) * 100) / 100 + " Cr"
     }
 }

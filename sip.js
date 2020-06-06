@@ -133,6 +133,9 @@ let drawPieChart = async (expected, gained) => {
         };
         
     let options = {
+        animation: true,
+        animationEasing: 'easeInOutQuart',
+        animationSteps: 80,
         responsive: true,
         title: {
             display: true,
@@ -193,23 +196,6 @@ let getResults = async () => {
 };
 
 
-//window.onload = drawBarGraph;
-
-
-// window.onload = function() {
-//     var ctx = document.getElementById("barChart");
-//     var lineChart = new Chart(ctx, {
-//       type: 'line',
-//       data: {
-//         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-//         datasets: [{
-//           label: "2015",
-//           data: [10, 8, 6, 5, 12, 8, 16, 17, 6, 7, 6, 10]
-//         }]
-//       }
-//     })
-//   }
-
 let approximate = (value) =>  {
     if (value < 1000) {
         return "<1000"
@@ -218,7 +204,7 @@ let approximate = (value) =>  {
         return Math.round((value / 1000) * 100) / 100 + "K"
     }
     else if (value >= 100000 && value < 10000000) {
-        return Math.round((value / 100000) * 100) / 100 + " Lakhs"
+        return Math.round((value / 100000) * 100) / 100 + " L"
     }
     else if (value > 10000000) {
         return Math.round((value / 10000000) * 100) / 100 + " Cr"

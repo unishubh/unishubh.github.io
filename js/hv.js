@@ -102,7 +102,7 @@ let getResults = async () => {
     let calculated_values = calculation_periods.map(time => Math.round(calculateValue(data.expense, 0, time)));
    // console.log(result);
     console.log(calculated_values);
-    await drawBarGraph(calculated_values);
+   // await drawBarGraph(calculated_values);
     await putData(data.expense, data.rage - data.cage, result);
     await putDataInTable(calculated_values,calculation_periods);
     document.getElementById('result').style.display = "block";

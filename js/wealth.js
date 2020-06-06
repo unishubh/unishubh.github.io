@@ -77,7 +77,7 @@ let drawBarGraph = async (calculated_values) => {
                     },
                     formatter: function (value, context) {
                         if (value >= 1000 && value < 100000) {
-                            return Math.round((value / 1000) * 100) / 100 + "Th"
+                            return Math.round((value / 1000) * 100) / 100 + "K"
                         }
                         else if (value >= 100000 && value < 10000000) {
                             return Math.round((value / 100000) * 100) / 100 + "L"
@@ -140,6 +140,7 @@ let putData = async (principle, years, result) => {
    // document.getElementById('invested').innerHTML = "Rs." + Math.round(net_invested);
     document.getElementById('minvested').innerHTML = "Rs." + numberWithCommas(Math.round(net_invested/(12*years))) + " ( "+approximate(net_invested/(12*years)) + " )";
     document.getElementById('interest').innerHTML = "Rs." + numberWithCommas(Math.round(net_gain))+ " ( "+approximate(net_gain) + " )";
+    document.getElementById('totinvested').innerHTML = "Rs." + numberWithCommas(Math.round(net_invested)) + " ( "+approximate(net_invested) + " )";
 }
 
 let getResults = async () => {

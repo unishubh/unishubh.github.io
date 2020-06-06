@@ -13,16 +13,21 @@
 
 
                 <div class="row">
-                    <div class="col-sm-2 md-2"></div>
+                    <div class="col-sm-1 md-1"></div>
                     <div class="col-sm-10 md-10">
-                    <a target="_blank" href="https://www.facebook.com/Niveshala5" class="fa fa-facebook"></a>
-                    <a target="_blank" href="https://twitter.com/niveshala" class="fa fa-twitter"></a>
-                    <a target="_blank" href="#" class="fa fa-whatsapp"></a>
-                    <a target="_blank" href="https://www.linkedin.com/company/3505025/admin/" class="fa fa-linkedin"></a>
-                    <a target="_blank" href="https://www.youtube.com/channel/UCtB9DFySYe-wF975psP3kfw" class="fa fa-youtube"></a>
-                    <a target="_blank" href="https://www.instagram.com/niveshala" class="fa fa-instagram"></a>
-                    <a target="_blank" href="https://www.niveshala.com" class="fa fa-wordpress"></a>
-                    <a target="_blank" href="https://www.facebook.com/groups/niveshala/" class="fa fa-facebook"></a>
+                        <a target="_blank" href="https://www.niveshala.com" class="fa fa-wordpress"></a>
+                        <a target="_blank" href="https://www.facebook.com/Niveshala5" class="fa fa-facebook"></a>
+                        <a target="_blank" href="https://twitter.com/niveshala" class="fa fa-twitter"></a>
+                        <a target="_blank" href="https://www.linkedin.com/company/3505025/admin/" class="fa fa-linkedin"></a>
+                        <a target="_blank" href="https://www.youtube.com/channel/UCtB9DFySYe-wF975psP3kfw" class="fa fa-youtube"></a>
+                        <a target="_blank" href="https://www.instagram.com/niveshala" class="fa fa-instagram"></a>
+                        <a target="_blank" href="https://chat.whatsapp.com/FM1KxUorGviEXoRkty7fGK" class="fa fa-whatsapp"></a>
+                        <span class="tooltiptext">Tooltip text</span>
+<!--                        <div class="tooltip">Hover over me-->
+<!--                            <span class="tooltiptext">Tooltip text</span>-->
+<!--                        </div>-->
+                        <a target="_blank" href="https://www.facebook.com/groups/niveshala/" class="fa fa-facebook group"></a>
+<!--                        <img src="./facebook.png">-->
                     </div>
                 </div>
 
@@ -152,5 +157,26 @@
         margin: 5px 5px;
         border-radius: 50%;
     }
+    .group{
+        color: white;
+        background: black;
+    }
+    .tooltiptext {
+       visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+    }
+    .fa-whatsapp :hover .tooltiptext{
+        visibility: visible;
+    }
+
 </style>
 </html>
