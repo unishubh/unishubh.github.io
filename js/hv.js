@@ -104,7 +104,7 @@ let getResults = async () => {
     console.log(calculated_values);
    // await drawBarGraph(calculated_values);
     await putData(data.expense, data.rage - data.cage, result);
-    await putDataInTable(calculated_values,calculation_periods);
+   // await putDataInTable(calculated_values,calculation_periods);
     document.getElementById('result').style.display = "block";
     document.getElementById('barBanner').innerHTML = "Calculations based on monthly expense of Rs. " + data.expense + " at " + 6 + "% inflation";
 };

@@ -1,11 +1,16 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
 <link rel ="stylesheet" href="./style.css">
 <script >
     $(function(){
         $('#header').load('header.html')
     });
+
+    function sendEmail() {
+
+    }
 </script>
 <!------ Include the above in your HEAD tag ---------->
 
@@ -109,19 +114,64 @@
                     <div class="col-sm-12 md-12 " id="details">
                         <p>
                         <h5 class="banner">Contact Us</h5>
-                        <br>
-                        <p>
-                            A <strong>Financial Education Initiative </strong>which offers up-to-date Financial Knowledge, Investment Ideas,
-                            Analytics, Financial  <br>Planning & New Investment Strategies. <strong>Niveshala</strong> is a way to connect the Financial Freedom through proper Planning in the Inner & Outer worlds. Wealth is more of a <strong>mindset</strong> and to acquire the Wealth, we required a higher Perspective & Psychological advancement.<br><br>
 
-                            Investment is also more of an <strong>art rather than Science</strong>, the More Sophisticated Investor you become over the period of time, the more wealth you create.<br><br>
+                        <form >
+                            <div class="row">
+                                <div class="col-sm-6 md-6">
+                                    <div class="form-group">
+                                        <label for="principle"><strong>Name</strong></label>
+                                        <input type="text" class="form-control" id="name">
+                                    </div>
 
+                                </div>
+                                <div class="col-sm-6 md-6">
+                                    <div class="form-group">
+                                        <label for="period"><strong>City</strong></label>
+                                        <input type="text" class="form-control" id="years">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 md-6">
+                                    <div class="form-group">
+                                        <label for="principle"><strong>Contact Number</strong></label>
+                                        <input type="text" class="form-control" id="rate" >
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 md-6">
+                                    <div class="form-group">
+                                        <label for="principle"><strong>Purpose</strong></label>
+                                        <input type="text" class="form-control" id="delay" >
+                                    </div>
 
-                            We at Niveshala, sharing these wealth secrets to the People and their best use in one's lives.<br>
-                            The ultimate motive is to <strong>share knowledge, which leads to Wisdom that Brings an abundance of Prosperity into one's lives.</strong><br><br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 md-12">
+                                    <div class="form-group">
+                                        <label for="principle"><strong>Address</strong></label>
+                                        <input type="text" class="form-control" id="address" >
+                                    </div>
+                                </div>
 
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-3 md-3">
 
-                        <div id="share"></div>
+                                </div>
+                                <div class="col-sm-6 md-6">
+
+                                        <button type="button" style="position: relative; top:-10%;"
+                                                onclick="sendEmail()" class="btn btn-outline-secondary"
+                                                id="submit">Submit
+                                        </button>
+
+                                    <div class="col-sm-3 md-3">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                         <hr>
                         <b>Connect with our Investor Education Initiative (NIVESHALA) </b> to Enhance Knowledge and Make a better choice in Life in terms of Personal Finance
 
