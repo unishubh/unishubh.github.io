@@ -129,7 +129,7 @@ let approximate = (value) =>  {
         return Math.round((value / 1000) * 100) / 100 + "K"
     }
     else if (value >= 100000 && value < 10000000) {
-        return Math.round((value / 100000) * 100) / 100 + " Lakhs"
+        return Math.round((value / 100000) * 100) / 100 + " L"
     }
     else if (value >= 10000000) {
         return Math.round((value / 10000000) * 100) / 100 + " Cr"
