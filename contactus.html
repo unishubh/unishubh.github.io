@@ -149,7 +149,7 @@
                             <div class="row">
                                 <div class="col-sm-12 md-12">
                                     <div class="form-group">
-                                        <label for="principle"><strong>Address</strong></label>
+                                        <label for="principle"><strong>Email ID</strong></label>
                                         <input type="text" class="form-control" id="address" >
                                     </div>
                                 </div>
@@ -162,7 +162,7 @@
                                 <div class="col-sm-6 md-6">
 
                                         <button type="button" style="position: relative; top:-10%;"
-                                                onclick="sendEmail()" class="btn btn-outline-secondary"
+                                                onclick="writeToFile()" class="btn btn-outline-secondary"
                                                 id="submit">Submit
                                         </button>
 
@@ -203,4 +203,9 @@
 </div>
 </body>
 <div id="footer"></div>
+<script>
+    function writeToFile() {
+        alert("Your response has been recorded successfully")
+    }
+</script>
 </html>
