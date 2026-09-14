@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#f8fafc] text-slate-800 font-sans antialiased min-h-screen;
+    background-image: radial-gradient(rgba(16, 185, 129, 0.04) 1px, transparent 1px), radial-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: 0 0, 12px 12px;
+  }
+}
+
+/* Custom range slider styling */
+input[type="range"] {
+  @apply appearance-none w-full h-2 rounded-lg bg-slate-200 cursor-pointer outline-none transition-all;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  @apply appearance-none w-5 h-5 rounded-full bg-white border-2 border-emerald-500 shadow-md cursor-pointer transition-transform duration-150 ease-out;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  @apply scale-125 border-emerald-600 shadow-lg;
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+  @apply scale-110 bg-emerald-50;
+}
+
+input[type="range"]::-moz-range-thumb {
+  @apply appearance-none w-5 h-5 rounded-full bg-white border-2 border-emerald-500 shadow-md cursor-pointer transition-transform duration-150 ease-out;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  @apply scale-125 border-emerald-600 shadow-lg;
+}
+
+/* Hide number spin arrows for clean UI */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Glass card styling */
+.fintech-card {
+  @apply bg-white border border-slate-200/80 rounded-2xl shadow-sm transition-all duration-200;
+}
+
+.fintech-card-hover {
+  @apply hover:border-slate-300 hover:shadow-md;
+}
