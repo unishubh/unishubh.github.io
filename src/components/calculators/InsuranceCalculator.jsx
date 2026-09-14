@@ -1,12 +1,15 @@
 import React, { useState, useMemo } from 'react';
 import { ShieldCheck, Umbrella, HeartPulse, RefreshCw, HelpCircle, ChevronDown, CheckCircle2 } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
+import LeadCaptureModal from '../LeadCaptureModal';
+import LeadCtaBanner from '../LeadCtaBanner';
 
 export default function InsuranceCalculator() {
   const [monthlyExpense, setMonthlyExpense] = useState(30000); // ₹30,000
   const [currentAge, setCurrentAge] = useState(28);            // 28 Yrs
   const [retirementAge, setRetirementAge] = useState(60);      // 60 Yrs
   const [inflationRate, setInflationRate] = useState(6);       // 6%
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [openFaq, setOpenFaq] = useState(true);
 
@@ -375,6 +378,13 @@ export default function InsuranceCalculator() {
         </div>
       </div>
 
+      {/* High-Converting Lead Capture Banner */}
+      <LeadCtaBanner
+        onOpenModal={() => setIsModalOpen(true)}
+        title="Protect your family's future with a tailored Term Insurance quote"
+        subtitle={`Get free comparative quotes from top insurers for your ${formatCompactINR(inflatedCover)} recommended life cover.`}
+      />
+
       {/* Educational Accordion */}
       <div className="fintech-card p-6 bg-white border border-slate-200/90 rounded-2xl shadow-fintech space-y-4">
         <button
@@ -400,6 +410,17 @@ export default function InsuranceCalculator() {
           </div>
         )}
       </div>
+
+      {/* Lead Capture Modal */}
+      <LeadCaptureModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        calculatorType="Term Insurance HLV"
+        investmentOrLoanAmount={`Monthly Exp: ${formatINR(monthlyExpense)}/mo`}
+        tenure={`${yearsRemaining} Earning Years (Age ${currentAge} to ${retirementAge})`}
+        rate={`Inflation: ${inflationRate}%`}
+        projectedResult={`Cover Needed: ${formatINR(inflatedCover)}`}
+      />
     </div>
   );
 }

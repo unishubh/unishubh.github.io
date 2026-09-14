@@ -1,11 +1,14 @@
 import React, { useState, useMemo } from 'react';
 import { Calculator, CreditCard, PieChart as PieIcon, RefreshCw, HelpCircle, ChevronDown, CheckCircle2 } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
+import LeadCaptureModal from '../LeadCaptureModal';
+import LeadCtaBanner from '../LeadCtaBanner';
 
 export default function EmiCalculator() {
   const [loanAmount, setLoanAmount] = useState(1000000); // ₹10 Lakh
   const [loanTenure, setLoanTenure] = useState(5);        // 5 Years
   const [interestRate, setInterestRate] = useState(8.5);   // 8.5%
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [openFaq, setOpenFaq] = useState(true);
 
@@ -338,6 +341,13 @@ export default function EmiCalculator() {
         </div>
       </div>
 
+      {/* High-Converting Lead Capture Banner */}
+      <LeadCtaBanner
+        onOpenModal={() => setIsModalOpen(true)}
+        title="Reduce your loan interest burden — Get an EMI optimization plan"
+        subtitle={`Discover smart prepayment and refinancing strategies for your ${formatCompactINR(loanAmount)} loan.`}
+      />
+
       {/* Educational Accordion */}
       <div className="fintech-card p-6 bg-white border border-slate-200/90 rounded-2xl shadow-fintech space-y-4">
         <button
@@ -363,6 +373,17 @@ export default function EmiCalculator() {
           </div>
         )}
       </div>
+
+      {/* Lead Capture Modal */}
+      <LeadCaptureModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        calculatorType="Loan EMI Calculator"
+        investmentOrLoanAmount={`Loan: ${formatINR(loanAmount)}`}
+        tenure={`${loanTenure} Years`}
+        rate={`${interestRate}% p.a.`}
+        projectedResult={`EMI: ${formatINR(monthlyEmi)}/mo (Total Int: ${formatCompactINR(totalInterest)})`}
+      />
     </div>
   );
 }

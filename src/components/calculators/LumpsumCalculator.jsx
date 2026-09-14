@@ -1,11 +1,14 @@
 import React, { useState, useMemo } from 'react';
 import { Layers, ArrowUpRight, Wallet, Award, RefreshCw, HelpCircle, ChevronDown, CheckCircle2 } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
+import LeadCaptureModal from '../LeadCaptureModal';
+import LeadCtaBanner from '../LeadCtaBanner';
 
 export default function LumpsumCalculator() {
   const [totalInvestment, setTotalInvestment] = useState(25000); // ₹25,000
   const [investmentPeriod, setInvestmentPeriod] = useState(5);   // 5 Years
   const [expectedReturnRate, setExpectedReturnRate] = useState(12); // 12%
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [openFaq, setOpenFaq] = useState(true);
 
@@ -326,6 +329,13 @@ export default function LumpsumCalculator() {
         </div>
       </div>
 
+      {/* High-Converting Lead Capture Banner */}
+      <LeadCtaBanner
+        onOpenModal={() => setIsModalOpen(true)}
+        title="Want a personalized Lump Sum wealth blueprint?"
+        subtitle={`Receive a custom plan based on your ${formatCompactINR(totalInvestment)} investment and ${investmentPeriod}-year horizon.`}
+      />
+
       {/* Educational Accordion */}
       <div className="fintech-card p-6 bg-white border border-slate-200/90 rounded-2xl shadow-fintech space-y-4">
         <button
@@ -351,6 +361,17 @@ export default function LumpsumCalculator() {
           </div>
         )}
       </div>
+
+      {/* Lead Capture Modal */}
+      <LeadCaptureModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        calculatorType="Lump Sum Calculator"
+        investmentOrLoanAmount={formatINR(totalInvested)}
+        tenure={`${investmentPeriod} Years`}
+        rate={`${expectedReturnRate}% p.a.`}
+        projectedResult={`Maturity: ${formatINR(maturityValue)}`}
+      />
     </div>
   );
 }

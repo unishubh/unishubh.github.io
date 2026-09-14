@@ -1,12 +1,15 @@
 import React, { useState, useMemo } from 'react';
 import { Clock, AlertTriangle, TrendingDown, ArrowRight, RefreshCw, HelpCircle, ChevronDown, CheckCircle2 } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
+import LeadCaptureModal from '../LeadCaptureModal';
+import LeadCtaBanner from '../LeadCtaBanner';
 
 export default function SipDelayCalculator() {
   const [monthlyInvestment, setMonthlyInvestment] = useState(2000);
   const [investmentPeriod, setInvestmentPeriod] = useState(5);
   const [expectedReturnRate, setExpectedReturnRate] = useState(12);
   const [delayMonths, setDelayMonths] = useState(6);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [openFaq, setOpenFaq] = useState(true);
 
@@ -387,6 +390,13 @@ export default function SipDelayCalculator() {
         </div>
       </div>
 
+      {/* High-Converting Lead Capture Banner */}
+      <LeadCtaBanner
+        onOpenModal={() => setIsModalOpen(true)}
+        title="Stop losing compounding wealth — Start your plan today"
+        subtitle={`Don't surrender ₹${Math.round(costOfDelay).toLocaleString('en-IN')} to delay. Get a tailored SIP roadmap.`}
+      />
+
       {/* Educational Section */}
       <div className="fintech-card p-6 bg-white border border-slate-200/90 rounded-2xl shadow-fintech space-y-4">
         <button
@@ -412,6 +422,17 @@ export default function SipDelayCalculator() {
           </div>
         )}
       </div>
+
+      {/* Lead Capture Modal */}
+      <LeadCaptureModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        calculatorType="SIP Delay Calculator"
+        investmentOrLoanAmount={`₹${monthlyInvestment.toLocaleString('en-IN')}/mo`}
+        tenure={`${investmentPeriod} Years (${delayMonths} Mo Delay)`}
+        rate={`${expectedReturnRate}% p.a.`}
+        projectedResult={`Wealth Lost: ₹${Math.round(costOfDelay).toLocaleString('en-IN')}`}
+      />
     </div>
   );
 }

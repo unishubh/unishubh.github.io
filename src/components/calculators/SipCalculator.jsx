@@ -3,12 +3,15 @@ import CalculatorInputs from '../CalculatorInputs';
 import CalculatorResults from '../CalculatorResults';
 import GrowthMilestones from '../GrowthMilestones';
 import EducationalSection from '../EducationalSection';
+import LeadCaptureModal from '../LeadCaptureModal';
+import LeadCtaBanner from '../LeadCtaBanner';
 import { Zap } from 'lucide-react';
 
 export default function SipCalculator() {
   const [monthlyInvestment, setMonthlyInvestment] = useState(2000);
   const [investmentPeriod, setInvestmentPeriod] = useState(5);
   const [expectedReturnRate, setExpectedReturnRate] = useState(12);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { totalInvested, maturityValue, estimatedReturns } = useMemo(() => {
     const P = Number(monthlyInvestment) || 0;
@@ -86,7 +89,25 @@ export default function SipCalculator() {
         </div>
       </div>
 
+      {/* High-Converting Lead Capture Banner */}
+      <LeadCtaBanner
+        onOpenModal={() => setIsModalOpen(true)}
+        title="Want a personalized mutual fund portfolio blueprint?"
+        subtitle={`Receive a custom plan based on your ₹${monthlyInvestment.toLocaleString('en-IN')}/mo contribution and ${investmentPeriod}-year horizon.`}
+      />
+
       <EducationalSection />
+
+      {/* Lead Capture Modal with Autocaptured Data */}
+      <LeadCaptureModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        calculatorType="SIP Calculator"
+        investmentOrLoanAmount={`₹${monthlyInvestment.toLocaleString('en-IN')}/mo`}
+        tenure={`${investmentPeriod} Years`}
+        rate={`${expectedReturnRate}% p.a.`}
+        projectedResult={`Maturity: ₹${Math.round(maturityValue).toLocaleString('en-IN')}`}
+      />
     </div>
   );
 }

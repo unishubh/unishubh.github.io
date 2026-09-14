@@ -1,11 +1,14 @@
 import React, { useState, useMemo } from 'react';
 import { Target, DollarSign, ArrowUpRight, Wallet, RefreshCw, HelpCircle, ChevronDown, CheckCircle2 } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
+import LeadCaptureModal from '../LeadCaptureModal';
+import LeadCtaBanner from '../LeadCtaBanner';
 
 export default function WealthCalculator() {
   const [targetWealth, setTargetWealth] = useState(1000000); // ₹10 Lakh
   const [tenureYears, setTenureYears] = useState(5);         // 5 Years
   const [expectedRate, setExpectedRate] = useState(12);       // 12%
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [openFaq, setOpenFaq] = useState(true);
 
@@ -334,6 +337,13 @@ export default function WealthCalculator() {
         </div>
       </div>
 
+      {/* High-Converting Lead Capture Banner */}
+      <LeadCtaBanner
+        onOpenModal={() => setIsModalOpen(true)}
+        title="Reach your target goal with an expert portfolio blueprint"
+        subtitle={`Get a personalized plan to achieve ₹${formatCompactINR(targetWealth)} in ${tenureYears} years with ${formatINR(requiredSip)}/month.`}
+      />
+
       {/* Educational Accordion */}
       <div className="fintech-card p-6 bg-white border border-slate-200/90 rounded-2xl shadow-fintech space-y-4">
         <button
@@ -359,6 +369,17 @@ export default function WealthCalculator() {
           </div>
         )}
       </div>
+
+      {/* Lead Capture Modal */}
+      <LeadCaptureModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        calculatorType="Wealth Goal Planner"
+        investmentOrLoanAmount={`Target: ${formatCompactINR(targetWealth)}`}
+        tenure={`${tenureYears} Years`}
+        rate={`${expectedRate}% p.a.`}
+        projectedResult={`Req. SIP: ${formatINR(requiredSip)}/mo`}
+      />
     </div>
   );
 }
