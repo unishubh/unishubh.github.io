@@ -48,6 +48,13 @@
       "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
     },
     {
+      "name": "SIP Step-Up Calculator",
+      "short_name": "Step-Up",
+      "description": "Simulate returns with annual SIP step-up increments",
+      "url": "./stepup.html",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
       "name": "Lump Sum Calculator",
       "short_name": "Lumpsum",
       "description": "Simulate returns on one-time mutual fund investments",

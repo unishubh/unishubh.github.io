@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import PwaInstallPrompt from './components/PwaInstallPrompt';
 import SipCalculator from './components/calculators/SipCalculator';
+import StepUpCalculator from './components/calculators/StepUpCalculator';
 import SipDelayCalculator from './components/calculators/SipDelayCalculator';
 import WealthCalculator from './components/calculators/WealthCalculator';
 import LumpsumCalculator from './components/calculators/LumpsumCalculator';
@@ -15,6 +16,7 @@ const getInitialTab = () => {
   const hash = window.location.hash.toLowerCase();
   const search = window.location.search.toLowerCase();
 
+  if (path.includes('stepup.html') || hash.includes('stepup') || search.includes('tab=stepup')) return 'stepup';
   if (path.includes('delay.html') || hash.includes('delay') || search.includes('tab=delay')) return 'delay';
   if (path.includes('wealth.html') || hash.includes('wealth') || search.includes('tab=wealth')) return 'wealth';
   if (path.includes('lumpsum.html') || hash.includes('lumpsum') || search.includes('tab=lumpsum')) return 'lumpsum';
@@ -44,6 +46,7 @@ export default function App() {
       {/* Dynamic Calculator Content */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         {activeTab === 'sip' && <SipCalculator />}
+        {activeTab === 'stepup' && <StepUpCalculator />}
         {activeTab === 'delay' && <SipDelayCalculator />}
         {activeTab === 'wealth' && <WealthCalculator />}
         {activeTab === 'lumpsum' && <LumpsumCalculator />}

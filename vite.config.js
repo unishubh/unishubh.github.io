@@ -20,6 +20,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
+        stepup: resolve(__dirname, 'stepup.html'),
         delay: resolve(__dirname, 'delay.html'),
         wealth: resolve(__dirname, 'wealth.html'),
         lumpsum: resolve(__dirname, 'lumpsum.html'),

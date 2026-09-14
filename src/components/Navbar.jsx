@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TrendingUp, Menu, X, Calculator, ShieldCheck, DollarSign, Clock, Layers, Download } from 'lucide-react';
+import { TrendingUp, Menu, X, Calculator, ShieldCheck, DollarSign, Clock, Layers, Download, Sparkles } from 'lucide-react';
 
 export default function Navbar({ activeTab, setActiveTab, pwaState }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -22,6 +22,7 @@ export default function Navbar({ activeTab, setActiveTab, pwaState }) {
 
   const navItems = [
     { id: 'sip', name: 'SIP', href: 'index.html', icon: TrendingUp },
+    { id: 'stepup', name: 'Step-Up', href: 'stepup.html', icon: Sparkles },
     { id: 'delay', name: 'SIP Delay', href: 'delay.html', icon: Clock },
     { id: 'wealth', name: 'Wealth', href: 'wealth.html', icon: DollarSign },
     { id: 'lumpsum', name: 'Lumpsum', href: 'lumpsum.html', icon: Layers },

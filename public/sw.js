@@ -4,12 +4,13 @@
  * Provides robust offline support, instant app launching, and asset caching.
  */
 
-const CACHE_NAME = 'mf-calc-shell-v1.0.0';
-const DYNAMIC_CACHE_NAME = 'mf-calc-dynamic-v1.0.0';
+const CACHE_NAME = 'mf-calc-shell-v1.1.0';
+const DYNAMIC_CACHE_NAME = 'mf-calc-dynamic-v1.1.0';
 
 const PRECACHE_ASSETS = [
   './',
   './index.html',
+  './stepup.html',
   './delay.html',
   './wealth.html',
   './lumpsum.html',

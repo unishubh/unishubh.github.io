@@ -49,6 +49,15 @@ export default function Footer({ setActiveTab }) {
               </li>
               <li>
                 <a
+                  href="stepup.html"
+                  onClick={(e) => handleLink(e, 'stepup', 'stepup.html')}
+                  className="hover:text-emerald-600 transition-colors"
+                >
+                  SIP Step-Up Calculator
+                </a>
+              </li>
+              <li>
+                <a
                   href="delay.html"
                   onClick={(e) => handleLink(e, 'delay', 'delay.html')}
                   className="hover:text-emerald-600 transition-colors"
