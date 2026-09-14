@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, CheckCircle2, Loader2, ShieldCheck, Sparkles, Send, ArrowRight } from 'lucide-react';
 import { submitLeadToGoogleSheet } from '../services/leadService';
+import { track } from '@vercel/analytics';
 
 export default function LeadCaptureModal({
   isOpen,
@@ -52,6 +53,14 @@ export default function LeadCaptureModal({
         rate,
         projectedResult,
       });
+
+      try {
+        track('lead_submitted', {
+          calculator: calculatorType,
+        });
+      } catch (e) {
+        // Safe fallback if analytics blocked
+      }
 
       setLoading(false);
       setSubmitted(true);

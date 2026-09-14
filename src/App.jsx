@@ -10,6 +10,7 @@ import LumpsumCalculator from './components/calculators/LumpsumCalculator';
 import EmiCalculator from './components/calculators/EmiCalculator';
 import InsuranceCalculator from './components/calculators/InsuranceCalculator';
 import { usePwa } from './hooks/usePwa';
+import { Analytics } from '@vercel/analytics/react';
 
 const getInitialTab = () => {
   const path = window.location.pathname.toLowerCase();
@@ -59,6 +60,9 @@ export default function App() {
 
       {/* Footer */}
       <Footer setActiveTab={setActiveTab} />
+
+      {/* Vercel Web Analytics Observability */}
+      <Analytics />
     </div>
   );
 }
