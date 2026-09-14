@@ -1,8 +1,24 @@
 import React, { useState } from 'react';
-import { TrendingUp, Menu, X, Calculator, ShieldCheck, DollarSign, Clock, Layers } from 'lucide-react';
+import { TrendingUp, Menu, X, Calculator, ShieldCheck, DollarSign, Clock, Layers, Download } from 'lucide-react';
 
-export default function Navbar({ activeTab, setActiveTab }) {
+export default function Navbar({ activeTab, setActiveTab, pwaState }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const {
+    isInstallable = false,
+    isInstalled = false,
+    isIOS = false,
+    promptInstall,
+    setShowIOSModal,
+  } = pwaState || {};
+
+  const handleInstallClick = () => {
+    if (isIOS && setShowIOSModal) {
+      setShowIOSModal(true);
+    } else if (promptInstall) {
+      promptInstall();
+    }
+  };
 
   const navItems = [
     { id: 'sip', name: 'SIP', href: 'index.html', icon: TrendingUp },
@@ -71,8 +87,20 @@ export default function Navbar({ activeTab, setActiveTab }) {
             })}
           </nav>
 
-          {/* Right Action / Info pill */}
+          {/* Right Action / Info pill & PWA Install button */}
           <div className="hidden lg:flex items-center space-x-3">
+            {!isInstalled && isInstallable && (
+              <button
+                type="button"
+                onClick={handleInstallClick}
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-xs transition-colors cursor-pointer"
+                title="Install app to your home screen or desktop"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Install App</span>
+              </button>
+            )}
+
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/60">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               Live Financial Suite
@@ -80,7 +108,19 @@ export default function Navbar({ activeTab, setActiveTab }) {
           </div>
 
           {/* Mobile menu button */}
-          <div className="flex md:hidden">
+          <div className="flex md:hidden items-center gap-2">
+            {!isInstalled && isInstallable && (
+              <button
+                type="button"
+                onClick={handleInstallClick}
+                className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 text-white shadow-xs"
+                aria-label="Install App"
+              >
+                <Download className="w-3.5 h-3.5" />
+                <span>Install</span>
+              </button>
+            )}
+
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               type="button"
@@ -120,6 +160,23 @@ export default function Navbar({ activeTab, setActiveTab }) {
               </a>
             );
           })}
+
+          {/* Mobile menu install CTA button */}
+          {!isInstalled && isInstallable && (
+            <div className="pt-2 border-t border-slate-100 mt-2">
+              <button
+                type="button"
+                onClick={() => {
+                  handleInstallClick();
+                  setMobileMenuOpen(false);
+                }}
+                className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold shadow-xs transition-colors"
+              >
+                <Download className="w-4 h-4" />
+                <span>Install App to Home Screen</span>
+              </button>
+            </div>
+          )}
         </div>
       )}
     </header>

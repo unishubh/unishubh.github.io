@@ -20,6 +20,9 @@ const filesToCopy = [
   'share.html',
   'sponsor.html',
   'style.css',
+  'public/manifest.webmanifest',
+  'public/manifest.json',
+  'public/sw.js',
 ];
 
 const distDir = path.resolve('dist');
@@ -29,7 +32,8 @@ if (!fs.existsSync(distDir)) {
 
 filesToCopy.forEach((file) => {
   if (fs.existsSync(file)) {
-    const dest = path.join(distDir, file);
+    const filename = path.basename(file);
+    const dest = path.join(distDir, filename);
     if (!fs.existsSync(dest)) {
       fs.copyFileSync(file, dest);
     }
@@ -42,4 +46,10 @@ if (fs.existsSync(jsDir)) {
   fs.cpSync(jsDir, destJsDir, { recursive: true });
 }
 
-console.log('Static auxiliary assets successfully synced to dist');
+const iconsDir = path.resolve('public/icons');
+const destIconsDir = path.join(distDir, 'icons');
+if (fs.existsSync(iconsDir)) {
+  fs.cpSync(iconsDir, destIconsDir, { recursive: true });
+}
+
+console.log('Static auxiliary & PWA assets successfully synced to dist');

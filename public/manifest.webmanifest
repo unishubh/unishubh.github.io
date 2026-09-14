@@ -1,0 +1,79 @@
+{
+  "name": "MutualFund Calculators - SIP, Lumpsum & EMI Planning",
+  "short_name": "MF Calculators",
+  "id": "mutualfund-calculators-pwa",
+  "description": "High-precision mutual fund, SIP, EMI, wealth goal and delay calculators with instant offline support.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "window-controls-overlay"],
+  "orientation": "portrait-primary",
+  "background_color": "#f8fafc",
+  "theme_color": "#0f172a",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["finance", "utilities", "productivity"],
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-192-maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "SIP Calculator",
+      "short_name": "SIP",
+      "description": "Calculate returns on your Systematic Investment Plan",
+      "url": "./index.html",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Lump Sum Calculator",
+      "short_name": "Lumpsum",
+      "description": "Simulate returns on one-time mutual fund investments",
+      "url": "./lumpsum.html",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "SIP Delay Calculator",
+      "short_name": "Delay Cost",
+      "description": "Calculate wealth loss from delaying your SIP",
+      "url": "./delay.html",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Wealth Goal Planner",
+      "short_name": "Wealth Goal",
+      "description": "Calculate target corpus SIP required for retirement or goals",
+      "url": "./wealth.html",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Loan EMI Calculator",
+      "short_name": "Loan EMI",
+      "description": "Calculate monthly EMI and total interest for loans",
+      "url": "./emi.html",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
