@@ -4,7 +4,7 @@
  */
 
 // Replace this URL with your Google Apps Script Webhook URL (see GOOGLE_SHEETS_SETUP.md)
-export const GOOGLE_SHEETS_WEBHOOK_URL = '';
+export const GOOGLE_SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyHspaozW5Ic0PNV5AmTfVCRwc8D0TIPp42F-U2siG1ZL98ERVNUkwx0S9DTKBLfeWpLA/exec';
 
 /**
  * Submit lead data to Google Sheets
